@@ -4,8 +4,9 @@ WORKDIR /app
 
 COPY . /app
 
-RUN --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/ && \
-    uv pip install --system --break-system-packages .
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+RUN uv pip install --system --break-system-packages .
 
 EXPOSE 5010
 
